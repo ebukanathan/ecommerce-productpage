@@ -14,12 +14,16 @@ function App() {
 
       <div className="w-3/4 mx-auto  mt-10 grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col gap-4">
-          <div className="rounded-xl">
-            <img src="image-product-1.jpg" alt="" className="rounded-xl" />
+          <div className=" w-[400px] h-[400px] rounded-xl">
+            <img
+              src="image-product-1.jpg"
+              alt=""
+              className="rounded-xl w-full h-full"
+            />
           </div>
-          <div className="flex gap-4 w-full">
+          <div className="flex gap-2 w-full mx-auto">
             {thumbnails.map((item, index) => (
-              <div className="w-[120px] h-[120px] rounded-xl">
+              <div className="w-[70px] h-[70px] rounded-xl">
                 <img
                   src={item}
                   key={index}
@@ -28,6 +32,17 @@ function App() {
                 />
               </div>
             ))}
+          </div>
+        </div>
+
+        <div className="flex flex-col">
+          <div className="text-sm font-bold uppercase">sneaker company</div>
+          <div className="text-2xl w-2/3 font-bold capitalise">
+            Fall limted sneakers
+          </div>
+          <div className="text-sm">
+            these low profile are your perfect casual wea companion. Featuring a
+            gurable
           </div>
         </div>
       </div>
