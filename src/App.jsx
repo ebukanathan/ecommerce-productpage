@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Nav from "./components/Nav";
 
 function App() {
+  const [quantity, setQuantity] = useState(0);
+
+  const HandleIncrement = () => {
+    setQuantity((prev) => prev + 1);
+  };
+  const HandleDecrement = () => {
+    setQuantity((prev) => (quantity == 0 ? 0 : prev - 1));
+  };
+
   const thumbnails = [
     "image-product-1-thumbnail.jpg",
     "image-product-2-thumbnail.jpg",
@@ -9,8 +18,8 @@ function App() {
     "image-product-4-thumbnail.jpg",
   ];
   return (
-    <div>
-      <Nav />
+    <div className="relative">
+      <Nav quantity={quantity} />
 
       <div className="w-3/4 mx-auto  mt-10 grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col gap-4">
@@ -55,11 +64,17 @@ function App() {
 
           <div className="flex gap-4">
             <div className=" w-[80px] flex  rounded-lg  justify-between items-center bg-slate-500">
-              <div className="flex justify-center items-center w-[25px] h-[25px]">
+              <div
+                className="flex justify-center items-center w-[25px] h-[25px]"
+                onClick={HandleDecrement}
+              >
                 <img src="icon-minus.svg" alt="" />
               </div>
-              <div className="">3</div>
-              <div className="w-[25px] h-[25px] flex justify-center items-center">
+              <div className="">{quantity}</div>
+              <div
+                className="w-[25px] h-[25px] flex justify-center items-center"
+                onClick={HandleIncrement}
+              >
                 <img src="icon-plus.svg" alt="" />
               </div>
             </div>
@@ -73,10 +88,31 @@ function App() {
         </div>
       </div>
 
-      <div className="w-[300px] shadow-lg grid grid-cols-1">
+      {/* Cart */}
+      <div className="absolute top-10 right-10 z-10 bg-white  w-[250px] px-2 py-4 shadow-lg grid grid-cols-1 gap-4">
         <div className="font-bold text-xl">Cart</div>
-        <div className="w-4/5 flex justify-between ">
-          <div className="w-[50px] h-[50px]"></div>
+        <div className="w-[95%] mx-auto flex  gap-2 justify-between items-center ">
+          <div className="w-[50px] h-[50px] rounded-lg ">
+            <img
+              src="image-product-1-thumbnail.jpg"
+              alt=""
+              className="rounded-lg w-full object-cover object-center"
+            />
+          </div>
+          <div className="flex flex-col">
+            <div className="bfont-normal text-sm capitalize">
+              fall limited edition sneakers
+            </div>
+            <div className="bfont-normal text-sm capitalize">
+              {`$125 x ${quantity} = $${125 * quantity}`}{" "}
+            </div>
+          </div>
+          <div className="w-[30px] h-[30px]">
+            <img src="icon-delete.svg" alt="" />
+          </div>
+        </div>
+        <div className=" w-full bg-red-500 text-black px-4 py-2 rounded-lg font-bold flex justify-center items-center">
+          Checkout
         </div>
       </div>
     </div>
