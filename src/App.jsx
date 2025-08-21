@@ -1,8 +1,32 @@
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import Nav from "./components/Nav";
+import Cart from "./components/Cart";
+import Lightbox from "./components/Lightbox";
 
 function App() {
   const [quantity, setQuantity] = useState(0);
+  const [prodImage, setProdImage] = useState(1);
+  const [isOpen, setIsOpen] = useState(false);
+  const [product, setProduct] = useState([
+    {
+      productName: "",
+      quantity: "",
+      image: "",
+    },
+  ]);
+
+  const AddtoCart = () => {
+    setProduct((prev) => [
+      ...prev,
+      {
+        productName: "Fall Limited edition Sneaker",
+        quantity: quantity,
+        image: "image-product-1-thumbnail.jpg",
+      },
+    ]);
+
+    console.log(product);
+  };
 
   const HandleIncrement = () => {
     setQuantity((prev) => prev + 1);
@@ -11,30 +35,61 @@ function App() {
     setQuantity((prev) => (quantity == 0 ? 0 : prev - 1));
   };
 
+  const HandleClick = (n) => {
+    setProdImage(n);
+    console.log(n);
+  };
+
+  const ToggleCart = () => {
+    setIsOpen((n) => !n);
+  };
+
   const thumbnails = [
-    "image-product-1-thumbnail.jpg",
-    "image-product-2-thumbnail.jpg",
-    "image-product-3-thumbnail.jpg",
-    "image-product-4-thumbnail.jpg",
+    {
+      id: 1,
+      thumbnail: "image-product-1-thumbnail.jpg",
+      product: "image-product-1.jpg",
+    },
+    {
+      id: 2,
+      thumbnail: "image-product-2-thumbnail.jpg",
+      product: "image-product-2.jpg",
+    },
+    {
+      id: 3,
+      thumbnail: "image-product-3-thumbnail.jpg",
+      product: "image-product-3.jpg",
+    },
+    {
+      id: 4,
+      thumbnail: "image-product-4-thumbnail.jpg",
+      product: "image-product-4.jpg",
+    },
   ];
   return (
     <div className="relative">
-      <Nav quantity={quantity} />
+      <Nav product={product} ToggleCart={ToggleCart} />
+
+      <Lightbox />
+      <div className="font-bold text-2xl"></div>
 
       <div className="w-3/4 mx-auto  mt-10 grid grid-cols-1 md:grid-cols-2">
         <div className="flex flex-col gap-4">
           <div className=" w-[400px] h-[400px] rounded-xl">
             <img
-              src="image-product-1.jpg"
+              src={`image-product-${prodImage}.jpg`}
               alt=""
               className="rounded-xl w-full h-full"
             />
           </div>
           <div className="flex gap-2 w-full mx-auto">
             {thumbnails.map((item, index) => (
-              <div className="w-[70px] h-[70px] rounded-xl">
+              <div
+                className="w-[70px] h-[70px] rounded-xl"
+                onClick={() => HandleClick(item.id)}
+              >
                 <img
-                  src={item}
+                  src={item.thumbnail}
                   key={index}
                   alt={item + index}
                   className="w-full h-full rounded-xl object-cover object-center"
@@ -78,43 +133,20 @@ function App() {
                 <img src="icon-plus.svg" alt="" />
               </div>
             </div>
-            <div className="flex  gap-2 justify-center px-2">
+            <div className="flex  gap-2 justify-center px-2 bg-red-500 text-white hover:text-black">
               <div className="">
                 <img src="icon-cart.svg" alt="" />
               </div>
-              <div className="">Add to cart </div>
+              <div className="" onClick={AddtoCart}>
+                Add to cart{" "}
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* Cart */}
-      <div className="absolute top-10 right-10 z-10 bg-white  w-[250px] px-2 py-4 shadow-lg grid grid-cols-1 gap-4">
-        <div className="font-bold text-xl">Cart</div>
-        <div className="w-[95%] mx-auto flex  gap-2 justify-between items-center ">
-          <div className="w-[50px] h-[50px] rounded-lg ">
-            <img
-              src="image-product-1-thumbnail.jpg"
-              alt=""
-              className="rounded-lg w-full object-cover object-center"
-            />
-          </div>
-          <div className="flex flex-col">
-            <div className="bfont-normal text-sm capitalize">
-              fall limited edition sneakers
-            </div>
-            <div className="bfont-normal text-sm capitalize">
-              {`$125 x ${quantity} = $${125 * quantity}`}{" "}
-            </div>
-          </div>
-          <div className="w-[30px] h-[30px]">
-            <img src="icon-delete.svg" alt="" />
-          </div>
-        </div>
-        <div className=" w-full bg-red-500 text-black px-4 py-2 rounded-lg font-bold flex justify-center items-center">
-          Checkout
-        </div>
-      </div>
+      {isOpen && <Cart quantity={quantity} product={product} />}
     </div>
   );
 }

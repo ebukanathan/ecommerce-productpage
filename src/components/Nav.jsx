@@ -1,6 +1,6 @@
 import React from "react";
 
-function Nav({ quantity }) {
+function Nav({ product, ToggleCart }) {
   const navItem = ["Collections", "Men", "Women", "About", "Contact"];
   return (
     <div>
@@ -22,10 +22,10 @@ function Nav({ quantity }) {
         </div>
 
         <div className="flex gap-4 items-center justify-center">
-          <div className="relative">
+          <div className="relative " onClick={ToggleCart}>
             <img src="icon-cart.svg" alt="" />
             <div className="absolute bottom-[60%] right-0 rounded-xl flex justify-center items-center text-sm bg-red-500 text-white w-[15px] h-[15px]">
-              {quantity}
+              {product.length}
             </div>
           </div>
           <div className="w-[30px] h-[30px]">
