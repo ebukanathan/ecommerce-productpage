@@ -35,15 +35,48 @@ function App() {
           </div>
         </div>
 
-        <div className="flex flex-col">
+        <div className="flex flex-col gap-6">
           <div className="text-sm font-bold uppercase">sneaker company</div>
           <div className="text-2xl w-2/3 font-bold capitalise">
             Fall limted sneakers
           </div>
-          <div className="text-sm">
+          <div className="w-3/4 text-sm">
             these low profile are your perfect casual wea companion. Featuring a
-            gurable
+            durable rubber outer sole,they'll withstand everything the weather
+            can offer.
           </div>
+          <div className="flex items-center gap-2">
+            <div className="font-bold text-xl">$125.00</div>
+            <div className="bg-black text-white text-sm px-2 rounded-lg">
+              50%
+            </div>
+          </div>
+          <div className="text-md font-semibold line-through">$250.00</div>
+
+          <div className="flex gap-4">
+            <div className=" w-[80px] flex  rounded-lg  justify-between items-center bg-slate-500">
+              <div className="flex justify-center items-center w-[25px] h-[25px]">
+                <img src="icon-minus.svg" alt="" />
+              </div>
+              <div className="">3</div>
+              <div className="w-[25px] h-[25px] flex justify-center items-center">
+                <img src="icon-plus.svg" alt="" />
+              </div>
+            </div>
+            <div className="flex  gap-2 justify-center px-2">
+              <div className="">
+                <img src="icon-cart.svg" alt="" />
+              </div>
+              <div className="">Add to cart </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="w-[300px] shadow-lg grid grid-cols-1">
+        <div className="font-bold text-xl">Cart</div>
+        <div className="w-4/5 flex justify-between ">
+          <div className="w-[50px] h-[50px]"></div>
         </div>
       </div>
     </div>
