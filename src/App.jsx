@@ -79,7 +79,7 @@ function App() {
     },
   ];
   return (
-    <div className="relative w-full bg-yellow-500">
+    <div className="relative w-full ">
       <Nav product={product} ToggleCart={ToggleCart} />
 
       {modal && (
@@ -104,13 +104,13 @@ function App() {
               className="md:rounded-xl w-full h-full"
             />{" "}
             <div
-              className="bg-white w-[40px]  h-[40px] rounded-2xl absolute left-2 top-[50%] flex justify-center items-center p-2"
+              className="bg-white w-[40px]  h-[40px] rounded-full absolute left-2 top-[50%] md:flex justify-center items-center p-3 md:hidden"
               onClick={HandlePrev}
             >
               <img src="icon-previous.svg" alt="" className="w-full" />
             </div>
             <div
-              className="bg-white w-[50px] h-[50px] absolute rounded-xl right-2 top-[50%] "
+              className="bg-white w-[40px]  h-[40px] rounded-full absolute right-2 top-[50%] md:flex justify-center items-center p-3 md:hidden"
               onClick={HandleNext}
             >
               <img src="icon-next.svg" alt="" className="w-full" />
@@ -133,26 +133,28 @@ function App() {
           </div>
         </div>
 
-        <div className="flex flex-col gap-6">
+        <div className="w-[90%] mx-auto pt-4 flex flex-col gap-6">
           <div className="text-sm font-bold uppercase">sneaker company</div>
-          <div className="text-2xl w-2/3 font-bold capitalise">
-            Fall limted sneakers
+          <div className="w-full text-4xl w-2/3 font-bold capitalize">
+            Fall limited edition sneakers
           </div>
-          <div className="w-3/4 text-sm">
+          <div className="w-full w-3/4 text-sm">
             these low profile are your perfect casual wea companion. Featuring a
             durable rubber outer sole,they'll withstand everything the weather
             can offer.
           </div>
-          <div className="flex items-center gap-2">
-            <div className="font-bold text-xl">$125.00</div>
-            <div className="bg-black text-white text-sm px-2 rounded-lg">
-              50%
+          <div className="flex justify-between items-center md:flex-col md:items-start  gap-2">
+            <div className="flex items-center gap-2">
+              <div className="font-bold text-2xl">$125.00</div>
+              <div className="bg-black text-white text-sm px-2 rounded-lg">
+                50%
+              </div>
             </div>
+            <div className="text-md font-semibold line-through">$250.00</div>
           </div>
-          <div className="text-md font-semibold line-through">$250.00</div>
 
-          <div className="flex gap-4">
-            <div className=" w-[80px] flex  rounded-lg  justify-between items-center bg-slate-500">
+          <div className="flex flex-col gap-4  mb-10 md:flex-row">
+            <div className=" w-full px-2 py-3 flex  rounded-lg  justify-between items-center bg-slate-500 md:w-[100px] md:py-0">
               <div
                 className="flex justify-center items-center w-[25px] h-[25px]"
                 onClick={HandleDecrement}
@@ -167,7 +169,7 @@ function App() {
                 <img src="icon-plus.svg" alt="" />
               </div>
             </div>
-            <div className="flex  gap-2 justify-center px-2 bg-red-500 text-white hover:text-black">
+            <div className="flex  shadow-xl rounded-xl gap-2 justify-center px-2 py-3 bg-red-500 text-black md:px-7 hover:text-white">
               <div className="">
                 <img src="icon-cart.svg" alt="" />
               </div>
