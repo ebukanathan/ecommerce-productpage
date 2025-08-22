@@ -3,7 +3,7 @@ import React from "react";
 function Cart({ product, HandleDel }) {
   return (
     <>
-      <div className="absolute top-10 right-10 z-10 bg-white  w-[250px] px-2 py-4 shadow-lg grid grid-cols-1 gap-4">
+      <div className="absolute top-[100px] right-10 z-10 bg-white  w-[250px] px-2 py-4 shadow-lg grid grid-cols-1 gap-4">
         <div className="font-bold text-xl">Cart</div>
         {product.length > 0 ? (
           product.map((item, index) => (
@@ -40,7 +40,7 @@ function Cart({ product, HandleDel }) {
           </div>
         )}
         {product.length > 0 && (
-          <div className=" w-full bg-red-500 text-black px-4 py-2 rounded-lg font-bold flex justify-center items-center">
+          <div className=" w-full bg-Orange text-black px-4 py-2 rounded-lg font-bold flex justify-center items-center">
             Checkout
           </div>
         )}

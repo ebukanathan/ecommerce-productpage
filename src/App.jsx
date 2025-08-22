@@ -1,4 +1,4 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import Nav from "./components/Nav";
 import Cart from "./components/Cart";
 import Lightbox from "./components/Lightbox";
@@ -90,18 +90,17 @@ function App() {
           ToggleModal={ToggleModal}
         />
       )}
-      <div className="font-bold text-2xl"></div>
 
       <div className="w-full mx-auto mt-2  grid grid-cols-1 md:grid-cols-2 md:w-3/4 md:mt-10">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-4 ">
           <div
-            className=" relative w-full h-[40vh] md:w-[400px] md:h-[400px] md:rounded-xl"
+            className=" relative   w-full h-[40vh] md:w-full md:h-[400px] md:rounded-xl"
             onClick={ToggleModal}
           >
             <img
               src={`image-product-${prodImage}.jpg`}
               alt=""
-              className="md:rounded-xl w-full h-full"
+              className="md:rounded-xl w-full h-full object-cover"
             />{" "}
             <div
               className="bg-white w-[40px]  h-[40px] rounded-full absolute left-2 top-[50%] md:flex justify-center items-center p-3 md:hidden"
@@ -116,10 +115,10 @@ function App() {
               <img src="icon-next.svg" alt="" className="w-full" />
             </div>
           </div>
-          <div className="hidden md:flex gap-2 w-full mx-auto">
+          <div className="hidden md:grid grid-cols-4 gap-2 w-full mx-auto">
             {thumbnails.map((item, index) => (
               <div
-                className="w-[70px] h-[70px] rounded-xl"
+                className="w-[100px] h-[70px] rounded-xl"
                 onClick={() => HandleClick(item.id)}
               >
                 <img
@@ -154,7 +153,7 @@ function App() {
           </div>
 
           <div className="flex flex-col gap-4  mb-10 md:flex-row">
-            <div className=" w-full px-2 py-3 flex  rounded-lg  justify-between items-center bg-slate-500 md:w-[100px] md:py-0">
+            <div className=" w-full px-2 py-3 flex  rounded-lg  justify-between items-center bg-PaleOrange md:w-[100px] md:py-0">
               <div
                 className="flex justify-center items-center w-[25px] h-[25px]"
                 onClick={HandleDecrement}
@@ -169,7 +168,7 @@ function App() {
                 <img src="icon-plus.svg" alt="" />
               </div>
             </div>
-            <div className="flex  shadow-xl rounded-xl gap-2 justify-center px-2 py-3 bg-red-500 text-black md:px-7 hover:text-white">
+            <div className="flex  shadow-xl rounded-xl gap-2 justify-center px-2 py-3 bg-Orange text-black md:px-7 hover:text-white">
               <div className="">
                 <img src="icon-cart.svg" alt="" />
               </div>

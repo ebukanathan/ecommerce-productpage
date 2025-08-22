@@ -10,8 +10,8 @@ function Nav({ product, ToggleCart }) {
 
   return (
     <div>
-      <div className=" relative  h-auto px-3  mx-auto flex justify-between items-center pt-4 pb-2 md:pb-10 md:w-3/4 md:border-b md:border-black z-10">
-        <div className="flex  h-[inherit]  justify-center gap-8">
+      <div className=" relative  px-3  mx-auto flex justify-between items-center pt-4   md:w-3/4 md:border-b md:border-LightGrayishBlue z-10">
+        <div className="flex    justify-center items-center gap-8">
           <div className="flex gap-4">
             <img
               src="icon-menu.svg"
@@ -25,7 +25,7 @@ function Nav({ product, ToggleCart }) {
             {navItem.map((item, index) => (
               <li
                 key={index}
-                className="h-[inherit] cursor-pointer hover:border-red-500  "
+                className="h-[inherit]  py-8 border-b-2 border-transparent cursor-pointer hover:border-Orange  "
               >
                 {item}
               </li>
