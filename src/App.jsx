@@ -118,14 +118,16 @@ function App() {
           <div className="hidden md:grid grid-cols-4 gap-2 w-full mx-auto">
             {thumbnails.map((item, index) => (
               <div
-                className="w-[100px] h-[70px] rounded-xl"
+                className="w-[100px] h-[70px] rounded-xl "
                 onClick={() => HandleClick(item.id)}
               >
                 <img
                   src={item.thumbnail}
                   key={index}
                   alt={item + index}
-                  className="w-full h-full rounded-xl object-cover object-center"
+                  className={`w-full h-full rounded-xl object-cover object-center ${
+                    prodImage == item.id ? "border-2 border-Orange" : ""
+                  }`}
                 />
               </div>
             ))}
