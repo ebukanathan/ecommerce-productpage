@@ -4,12 +4,12 @@ function Nav({ product, ToggleCart }) {
   const navItem = ["Collections", "Men", "Women", "About", "Contact"];
   return (
     <div>
-      <div className=" w-3/4  h-auto mx-auto flex justify-between items-center pt-4 pb-10 border-b border-black z-10">
+      <div className=" w-3/4  h-auto mx-auto flex justify-between items-center pt-4 pb-10 md:border-b md:border-black z-10">
         <div className="flex  h-[inherit]  justify-center gap-8">
           <div className="">
             <img src="logo.svg" alt="" />
           </div>
-          <ul className="flex gap-3 h-[inherit] ">
+          <ul className="hidden md:flex gap-3 h-[inherit] ">
             {navItem.map((item, index) => (
               <li
                 key={index}

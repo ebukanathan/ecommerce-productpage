@@ -4,16 +4,11 @@ import Cart from "./components/Cart";
 import Lightbox from "./components/Lightbox";
 
 function App() {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [prodImage, setProdImage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
-  const [product, setProduct] = useState([
-    {
-      productName: "",
-      quantity: "",
-      image: "",
-    },
-  ]);
+  const [modal, setModal] = useState(false);
+  const [product, setProduct] = useState([]);
 
   const AddtoCart = () => {
     setProduct((prev) => [
@@ -44,6 +39,23 @@ function App() {
     setIsOpen((n) => !n);
   };
 
+  const ToggleModal = () => {
+    setModal((prev) => !prev);
+  };
+
+  const HandleNext = (e) => {
+    e.stopPropagation();
+    setProdImage((prev) => (prodImage == 4 ? 1 : prev + 1));
+  };
+  const HandlePrev = (e) => {
+    e.stopPropagation();
+    setProdImage((prev) => (prodImage == 1 ? 4 : prev - 1));
+  };
+
+  const HandleDel = (item) => {
+    setProduct(product.filter((n) => n !== item));
+  };
+
   const thumbnails = [
     {
       id: 1,
@@ -67,22 +79,44 @@ function App() {
     },
   ];
   return (
-    <div className="relative">
+    <div className="relative w-full bg-yellow-500">
       <Nav product={product} ToggleCart={ToggleCart} />
 
-      <Lightbox />
+      {modal && (
+        <Lightbox
+          HandleNext={HandleNext}
+          HandlePrev={HandlePrev}
+          prodImage={prodImage}
+          ToggleModal={ToggleModal}
+        />
+      )}
       <div className="font-bold text-2xl"></div>
 
-      <div className="w-3/4 mx-auto  mt-10 grid grid-cols-1 md:grid-cols-2">
+      <div className="w-full mx-auto  mt-10 grid grid-cols-1 md:grid-cols-2 md:w-3/4">
         <div className="flex flex-col gap-4">
-          <div className=" w-[400px] h-[400px] rounded-xl">
+          <div
+            className=" relative w-full md:w-[400px] md:h-[400px] md:rounded-xl"
+            onClick={ToggleModal}
+          >
             <img
               src={`image-product-${prodImage}.jpg`}
               alt=""
-              className="rounded-xl w-full h-full"
-            />
+              className="md:rounded-xl w-full h-full"
+            />{" "}
+            <div
+              className="bg-white w-[40px]  h-[40px] rounded-2xl absolute left-2 top-[50%] flex justify-center items-center p-2"
+              onClick={HandlePrev}
+            >
+              <img src="icon-previous.svg" alt="" className="w-full" />
+            </div>
+            <div
+              className="bg-white w-[50px] h-[50px] absolute rounded-xl right-2 top-[50%] "
+              onClick={HandleNext}
+            >
+              <img src="icon-next.svg" alt="" className="w-full" />
+            </div>
           </div>
-          <div className="flex gap-2 w-full mx-auto">
+          <div className="hidden md:flex gap-2 w-full mx-auto">
             {thumbnails.map((item, index) => (
               <div
                 className="w-[70px] h-[70px] rounded-xl"
@@ -146,7 +180,7 @@ function App() {
       </div>
 
       {/* Cart */}
-      {isOpen && <Cart quantity={quantity} product={product} />}
+      {isOpen && <Cart product={product} HandleDel={HandleDel} />}
     </div>
   );
 }
