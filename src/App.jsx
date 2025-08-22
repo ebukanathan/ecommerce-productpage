@@ -91,7 +91,7 @@ function App() {
         />
       )}
 
-      <div className="w-full mx-auto mt-2  grid grid-cols-1 md:grid-cols-2 md:w-3/4 md:mt-10">
+      <div className="w-full mx-auto mt-2  grid grid-cols-1 md:grid-cols-2 md:w-3/4 md:mt-10 md:gap-10">
         <div className="flex flex-col gap-4 ">
           <div
             className=" relative   w-full h-[40vh] md:w-full md:h-[400px] md:rounded-xl"
