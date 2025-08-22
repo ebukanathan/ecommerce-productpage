@@ -92,10 +92,10 @@ function App() {
       )}
       <div className="font-bold text-2xl"></div>
 
-      <div className="w-full mx-auto  mt-10 grid grid-cols-1 md:grid-cols-2 md:w-3/4">
+      <div className="w-full mx-auto mt-2  grid grid-cols-1 md:grid-cols-2 md:w-3/4 md:mt-10">
         <div className="flex flex-col gap-4">
           <div
-            className=" relative w-full md:w-[400px] md:h-[400px] md:rounded-xl"
+            className=" relative w-full h-[40vh] md:w-[400px] md:h-[400px] md:rounded-xl"
             onClick={ToggleModal}
           >
             <img
